@@ -1,0 +1,10 @@
+{
+  "name": "techbridge-sssutms",
+  "version": "1.0.0",
+  "description": "SSSUTMS GFG Campus Mantri Platform",
+  "scripts": {
+    "dev": "echo 'Static site - no dev server needed'",
+    "build": "echo 'Static site - no build step'",
+    "start": "echo 'Static site - open index.html in browser'"
+  }
+}
