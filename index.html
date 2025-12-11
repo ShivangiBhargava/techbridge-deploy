@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechBridge | SSSUTMS - GFG Partnership</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://media.geeksforgeeks.org/wp-content/uploads/20210915115837/gfg3-300x300.png">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #2980B9;
+            --accent: #E74C3C;
+            --success: #27AE60;
+            --warning: #F39C12;
+            --light: #ECF0F1;
+            --dark: #2C3E50;
+            --gfg-green: #2F8D46;
+            --sssutms-blue: #1A5276;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-dark: linear-gradient(135deg, #2C3E50 0%, #1A5276 100%);
+            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        .header {
+            background: white;
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: white;
+            padding: 5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo-img.gfg {
+            border: 2px solid var(--gfg-green);
+        }
+
+        .logo-img.sssutms {
+            border: 2px solid var(--sssutms-blue);
+        }
+
+        .brand-text h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .brand-text p {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-links a.active:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #E8F5E9;
+            color: var(--gfg-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--dark), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Events Grid */
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            border-radius: 2px;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .event-card.premium:before {
+            content: 'PREMIUM';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--warning);
+            color: white;
+            padding: 0.3rem 2.5rem;
+            transform: rotate(45deg);
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .event-header {
+            padding: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            position: relative;
+        }
+
+        .event-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-description {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .event-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .event-body {
+            padding: 1.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: var(--secondary);
+            width: 20px;
+        }
+
+        .progress-section {
+            margin: 1.5rem 0;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-primary {
+            flex: 1;
+            background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            flex: 1;
+            background: white;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-disabled {
+            flex: 1;
+            background: #eee;
+            color: #999;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: not-allowed;
+        }
+
+        /* Partnership Banner */
+        .partnership-banner {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 3rem 0;
+            margin: 4rem 0;
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partnership-banner:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 Z"/></svg>');
+            background-size: cover;
+        }
+
+        .banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner-text p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        .university-logos {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .logo-large {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            background: white;
+            padding: 10px;
+        }
+
+        .logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .logo-circle.gfg {
+            border: 4px solid var(--gfg-green);
+        }
+
+        .logo-circle.sssutms {
+            border: 4px solid var(--sssutms-blue);
+        }
+
+        .logo-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .banner-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .stats-bar {
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .event-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .logo-large {
+                flex-direction: column;
+            }
+            
+            .logo-circle {
+                width: 80px;
+                height: 80px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gfg-green), var(--sssutms-blue));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #267a39, #154360);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="brand">
+                    <div class="logo-container">
+                        <div class="logo">
+                            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210915115837/gfg3-300x300.png" 
+                                 alt="GeeksforGeeks Logo" class="logo-img gfg">
+                            <!-- SSSUTMS Logo from image -->
+                            <div class="logo-img sssutms" style="display: flex; align-items: center; justify-content: center; background: white; padding: 3px;">
+                                <div style="text-align: center; line-height: 1; font-family: Arial, sans-serif;">
+                                    <div style="font-size: 6px; font-weight: bold; color: #1A5276;">SRI SATYA SAI UNIVERSITY</div>
+                                    <div style="font-size: 6px; color: #1A5276; margin: 1px 0;">OF TECHNOLOGY & MEDICAL SCIENCES</div>
+                                    <div style="font-size: 12px; font-weight: bold; color: #1A5276; margin-top: 2px;">SSSUTMS</div>
+                                    <div style="font-size: 4px; color: #666; font-style: italic;">Where talent meets opportunity</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="brand-text">
+                            <h1>TechBridge</h1>
+                            <p>SSSUTMS × GeeksforGeeks Partnership</p>
+                        </div>
+                    </div>
+                </a>
+                <div class="nav-links">
+                    <a href="#" class="active">Events</a>
+                    <a href="https://www.geeksforgeeks.org/" target="_blank">Courses</a>
+                    <a href="https://www.geeksforgeeks.org/" target="_blank">Community</a>
+                    <a href="https://www.geeksforgeeks.org/" target="_blank">Resources</a>
+                    <a href="https://www.geeksforgeeks.org/profile/shivangibhargava22" target="_blank" class="cta-button">
+                        <i class="fas fa-user-graduate"></i> Campus Ambassador
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    Official GFG Campus Mantri Program
+                </div>
+                <h1 class="hero-title">
+                    Elevating Tech Education at<br>
+                    <span style="background: linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        SSSUTMS
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    Exclusive workshops, coding challenges, and placement preparation resources 
+                    in partnership with GeeksforGeeks - India's largest tech community.
+                </p>
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="stat-number">1,200+</div>
+                        <div class="stat-label">Students Engaged</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">45+</div>
+                        <div class="stat-label">Events Hosted</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Placements</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="container">
+        <div class="section-title fade-in">
+            <h2>Upcoming Tech Events</h2>
+        </div>
+
+        <div class="events-grid">
+            <!-- Event 1 -->
+            <div class="event-card fade-in">
+                <div class="event-header">
+                    <div class="event-badge">Most Popular</div>
+                    <h3 class="event-title">GFG DSA Masterclass</h3>
+                    <p class="event-description">
+                        Comprehensive Data Structures & Algorithms workshop designed exclusively for SSSUTMS students
+                    </p>
+                    <div class="event-tags">
+                        <span class="tag">DSA</span>
+                        <span class="tag">Placement</span>
+                        <span class="tag">Advanced</span>
+                    </div>
+                </div>
+                <div class="event-body">
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>December 25, 2025</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>10:00 AM - 1:00 PM</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Tech Innovation Lab, CSE Block</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Registration Progress</span>
+                            <span>45/100 Seats</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                    <div class="event-actions">
+                        <a href="/register/1" class="btn-primary">
+                            <i class="fas fa-ticket-alt"></i> Register Now
+                        </a>
+                        <a href="/event/1" class="btn-secondary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-card fade-in delay-1">
+                <div class="event-header">
+                    <div class="event-badge">New</div>
+                    <h3 class="event-title">Advanced Algorithms Workshop</h3>
+                    <p class="event-description">
+                        Master advanced algorithmic patterns for coding interviews with industry experts
+                    </p>
+                    <div class="event-tags">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Interview Prep</span>
+                        <span class="tag">Coding</span>
+                    </div>
+                </div>
+                <div class="event-body">
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>January 2, 2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>2:00 PM - 5:00 PM</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Seminar Hall, Main Building</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Registration Progress</span>
+                            <span>32/80 Seats</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%"></div>
+                        </div>
+                    </div>
+
+                    <div class="event-actions">
+                        <a href="/register/2" class="btn-primary">
+                            <i class="fas fa-ticket-alt"></i> Register Now
+                        </a>
+                        <a href="/event/2" class="btn-secondary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-card fade-in delay-2 premium">
+                <div class="event-header">
+                    <div class="event-badge">Premium</div>
+                    <h3 class="event-title">Hackathon Preparation Series</h3>
+                    <p class="event-description">
+                        Complete guide to winning national hackathons - From SSSUTMS to podium finishes
+                    </p>
+                    <div class="event-tags">
+                        <span class="tag">Hackathon</span>
+                        <span class="tag">Team Building</span>
+                        <span class="tag">Projects</span>
+                    </div>
+                </div>
+                <div class="event-body">
+                    <div class="event-meta">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>January 10, 2026</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <span>11:00 AM - 4:00 PM</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Auditorium, SSSUTMS Campus</span>
+                        </div>
+                    </div>
+                    
+                    <div class="progress-section">
+                        <div class="progress-label">
+                            <span>Registration Progress</span>
+                            <span>28/150 Seats</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 18.7%"></div>
+                        </div>
+                    </div>
+
+                    <div class="event-actions">
+                        <a href="/register/3" class="btn-primary">
+                            <i class="fas fa-crown"></i> Premium Access
+                        </a>
+                        <a href="/event/3" class="btn-secondary">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Banner -->
+    <section class="partnership-banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <h3>Exclusive Partnership</h3>
+                    <p>
+                        Sri Satya Sai University of Technology & Medical Sciences partners with 
+                        GeeksforGeeks to bring cutting-edge tech education, industry-aligned 
+                        curriculum, and placement opportunities to our students.
+                    </p>
+                    <a href="https://www.geeksforgeeks.org/" target="_blank" class="cta-button" style="margin-top: 20px;">
+                        <i class="fas fa-external-link-alt"></i> Explore GFG Resources
+                    </a>
+                </div>
+                <div class="university-logos">
+                    <div class="logo-large">
+                        <div class="logo-circle gfg">
+                            <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210915115837/gfg3-300x300.png" 
+                                 alt="GeeksforGeeks Logo">
+                        </div>
+                        <div class="logo-text">
+                            GeeksforGeeks<br>
+                            <small>Official Partner</small>
+                        </div>
+                    </div>
+                    <div class="logo-large">
+                        <div class="logo-circle sssutms">
+                            <!-- SSSUTMS Logo from image -->
+                            <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: white; padding: 15px;">
+                                <div style="text-align: center; line-height: 1.1; font-family: Arial, sans-serif;">
+                                    <div style="font-size: 10px; font-weight: bold; color: #1A5276;">SRI SATYA SAI UNIVERSITY</div>
+                                    <div style="font-size: 8px; color: #1A5276; margin: 3px 0;">OF TECHNOLOGY & MEDICAL SCIENCES</div>
+                                    <div style="font-size: 24px; font-weight: bold; color: #1A5276; margin-top: 5px;">SSSUTMS</div>
+                                    <div style="font-size: 7px; color: #666; font-style: italic; margin-top: 3px;">Where talent meets opportunity</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="logo-text">
+                            Sri Satya Sai University<br>
+                            <small>Premier Tech University</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TechBridge Platform</h4>
+                    <p>
+                        Bridging the gap between academic learning and industry requirements 
+                        through strategic partnerships and innovative tech education.
+                    </p>
+                    <div class="social-links">
+                        <!-- Social media links removed as requested -->
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.geeksforgeeks.org/user/shivangibhargava22/" target="_blank"><i class="fab fa-product-hunt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/">All Events</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/" target="_blank">GFG Courses</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/" target="_blank">Coding Challenges</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/" target="_blank">Interview Prep</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/placement-preparation/" target="_blank">Placement Records</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">DSA Sheets</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/projects/" target="_blank">Project Ideas</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/company-interview-corner/" target="_blank">Company-Wise Q/A</a></li>
+                        <li><a href="https://www.geeksforgeeks.org/profile/shivangibhargava22" target="_blank">Campus Ambassador</a></li>
+                        <li><a href="mailto:shivangi.bhargava2206@gmail.com">Contact Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> SSSUTMS, Sehore, MP</li>
+                        <li><i class="fas fa-envelope"></i> shivangi.bhargava2206@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> +91 80853 15091</li>
+                        <li><i class="fas fa-clock"></i> Mon-Fri: 9AM-6PM</li>
+                        <li><i class="fas fa-user-graduate"></i> Campus Mantri: Shivangi Bhargava</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 TechBridge | SSSUTMS × GeeksforGeeks Partnership. All rights reserved.</p>
+                <p>Designed for excellence in technical education at Sri Satya Sai University of Technology & Medical Sciences</p>
+                <p style="margin-top: 10px; color: #4CAF50;">
+                    <i class="fas fa-star"></i> Official GFG Campus Ambassador Profile: 
+                    <a href="https://www.geeksforgeeks.org/profile/shivangibhargava22" target="_blank" style="color: #4CAF50; text-decoration: underline;">
+                        https://www.geeksforgeeks.org/profile/shivangibhargava22
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => observer.observe(el));
+            
+            // Update registration counts dynamically
+            setInterval(() => {
+                const counts = document.querySelectorAll('.progress-fill');
+                counts.forEach(bar => {
+                    const currentWidth = parseFloat(bar.style.width);
+                    if (currentWidth < 100) {
+                        const increment = Math.random() * 0.5;
+                        bar.style.width = `${Math.min(currentWidth + increment, 100)}%`;
+                        
+                        // Update seat count text
+                        const progressLabel = bar.closest('.progress-section').querySelector('.progress-label span:last-child');
+                        if (progressLabel) {
+                            const match = progressLabel.textContent.match(/(\d+)\/(\d+)/);
+                            if (match) {
+                                const current = parseInt(match[1]);
+                                const total = parseInt(match[2]);
+                                const newCurrent = Math.min(current + 1, total);
+                                progressLabel.textContent = `${newCurrent}/${total} Seats`;
+                            }
+                        }
+                    }
+                });
+            }, 10000);
+            
+            // Button interactions for registration
+            document.querySelectorAll('.btn-primary[href^="/register"]').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const originalHTML = this.innerHTML;
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = '<i class="fas fa-check"></i> Registered!';
+                        this.style.background = 'linear-gradient(90deg, #27AE60, #2ECC71)';
+                        
+                        // Update progress bar
+                        const progressFill = this.closest('.event-card').querySelector('.progress-fill');
+                        const currentWidth = parseFloat(progressFill.style.width);
+                        progressFill.style.width = `${Math.min(currentWidth + 5, 100)}%`;
+                        
+                        // Restore after 3 seconds
+                        setTimeout(() => {
+                            this.innerHTML = originalHTML;
+                            this.style.background = 'linear-gradient(90deg, var(--gfg-green), var(--sssutms-blue))';
+                        }, 3000);
+                    }, 1500);
+                });
+            });
+            
+            // Campus Ambassador button tracking
+            document.querySelector('a[href*="shivangibhargava22"]').addEventListener('click', function() {
+                console.log('Campus Ambassador profile clicked');
+                // You can add analytics here
+            });
+
+            // Remove social media link redirects
+            document.querySelectorAll('.social-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Just show icon, no redirect
+                });
+            });
+        });
+    </script>
+</body>
+</html>
